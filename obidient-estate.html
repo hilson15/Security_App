@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://kit.fontawesome.com/188d62c901.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <title>Estate Security System</title>
+  <link rel="stylesheet" href="secure-styles.css">
+
+</head>
+<body>
+
+  <div id="alert"></div>
+  <!-- <div id="loadingBarContainer">
+    <div id="loadingBar"></div>
+  </div> --> 
+  
+  <div id="login-out-page" style="display:none;">
+    <h2>You have logged Out successfully</h2>
+    <button onclick="returnHome()">ok</button>
+  </div>
+
+  <div class="container" id="container">
+    <!-- Resident and Security Login Page -->
+    <div id="login">
+      <h1>Estate Security System</h1>
+      <h2>Resident Login</h2>
+      <input type="text" id="residentUsername" placeholder="Username">
+      <input type="password" id="residentPassword" placeholder="Password">
+      <button onclick="residentLogin()" class="logbtn">Login</button>
+
+      <h2>Security Login</h2>
+      <input type="text" id="securityUsername" placeholder="Username">
+      <input type="password" id="securityPassword" placeholder="Password">
+      <button onclick="securityLogin()" class="logbtn">Login</button>
+    </div>
+   
+
+    <!-- Resident Dashboard -->
+    <div id="residentDashboard" style="display:none;">
+      <h2>Welcome, <span id="residentLoggedInUser"></span>!</h2>
+      <select id="residentSelector">
+        <option value="">Select Resident</option>
+        <!-- Populate options dynamically using JavaScript -->
+      </select>
+      <div class="res-div-flex">
+      <div class="locate btn-card locate-color" onclick="shareLocation()"><span><i class="fa-solid fa-location-dot fa-shake"></i></span> Share Location</div>
+      <!-- Shared Location Section -->
+      <div id="sharedLocation" class="btn-card">
+        <span id="sharedLocationIndicator" style="color: red; display: none;"><i class="fa-regular fa-envelope fa-beat"></i></span>
+      <!-- <h6>Shared Location</h6> -->
+      <p id="sharedLocationDetails"></p>
+      <p id="residentSharedLocation"></p>
+      </div>
+      <div class="viewupdt btn-card" onclick="viewUpdate()"><span><i class="fa-regular fa-pen-to-square"></i></span> View Update</div>
+      <div class="postupdt btn-card" onclick="postUpdate()"><span><i class="fa-regular fa-paste"></i></span> Post Update</div>
+      <div class="checkbtn-card btn-card" onclick="checkInOut()"><span><i class="fa-solid fa-user-check"></i></span> Check In/Out</div>
+      <div class="visitbtn btn-card" onclick="openVisitorForm()"><span><i class="fa-regular fa-id-card"></i></span> Register Visitor</div>
+      <div class="sec-card btn-card" onclick="showSecurityLogin()"><span><i class="fa-solid fa-person-military-pointing"></i></span> Security Login</div>
+      
+      <div class="res-logout btn-card" onclick="residentLogout()"><span><i class="fa-solid fa-right-from-bracket"></i></span> Logout</div>
+    </div>
+      <div id="visitorForm" style="display:none;">
+        <span class="close" id="closeVisitor" onclick="closeVisitorForm()">&times;</span>
+        <h3>Visitor Information</h3>
+        <input type="text" id="visitorName" placeholder="Visitor Name">
+        <input type="text" id="visitorPurpose" placeholder="Purpose of Visit">
+        <input type="text" id="visitorHouseNumber" placeholder="House Number">
+        <input type="text" id="visitorHostName" placeholder="Host Name">
+        <button onclick="submitVisitor()">Submit</button>
+    </div>
+      
+
+    </div>
+<!-- Loading container
+<div id="loadingContainer" class="loading-container">
+  <div class="loading"></div>
+</div> -->
+  
+
+<!-- Security Dashboard -->
+<div class="sec-flex" id="securityDashboard" style="display:none;">
+    <h2>Security Dashboard</h2>
+    <!-- <span class="badge" id="notification-badge">7</span> -->
+
+     
+<div class="sec-flex">
+    <div id="notificationButton" type="button" class="btn btn-primary btn-card sec-btn" >
+       <div class="badge badge-danger" id="visitor-notification-badge">0</div>
+       <span>updates</span> 
+      <div class="sr-only">unread notifications</div>
+    </div>
+    <div id="confirmationBox" class="btn-card"  style="display:none;">
+      <span id="confirmationMessage"></span> <i class="fas fa-check-circle" id="verifiedIcon"></i>
+      
+      <i class="fa-solid fa-hand fa-beat" id="notVerifiedIcon"></i>
+    </div>
+    <div id="sharedLocation"class="btn-card" >
+      <span id="sharedLocationIndicator" style="color: red; display: none;" ><i class="fa-regular fa-envelope fa-beat"></i></span>
+      <h6>Shared Location</h6>
+      <p id="sharedLocationDetails"></p>
+      <p id="securitySharedLocation"></p>
+  </div>
+    <div class="btn-card res-logout" onclick="securityLogout()"><span><i class="fa-solid fa-right-from-bracket "></i></span>Logout</div>
+    <!-- Visitor Arrival Button -->
+  <div class="btn-card" onclick="notifyVisitorArrival()"><span><i class="fa-solid fa-dungeon"></i></span> Notify Visitor Arrival</div>
+  
+  <!-- Visitor Departure Button -->
+  <div class="btn-card" onclick="notifyVisitorDeparture()"><span><i class="fa-solid fa-person-walking-dashed-line-arrow-right"></i></span> Notify Visitor Departure</div>
+    <div class="btn-card" onclick="openVerifyForm()"><span><i class="fa-solid fa-file-circle-check"></i></span> Verify Resident</div>
+    <div id="verifyForm" style="display:none;">
+      <input type="text" id="verifyUsername" placeholder="Enter Resident Username">
+      <input type="password" id="verifyPasscode" placeholder="Enter Resident Passcode">
+      <div class="btn-card veri" onclick="verifyResident()"><span><i class="fa-solid fa-ticket"></i></span> Verify</div>
+    </div>
+    
+    <!-- Resident information goes here -->
+    <div id="residentInfo" style="display:none;">
+      <img id="residentImage" src="" alt="Resident Image" style="max-width: 150px;">
+      <p id="residentName"></p>
+      <p id="residentHouseNumber"></p>
+      <!-- below is a button to show resident's relations -->
+      <div class="btn-card" id="showRelationsButton"  onclick="showRelations()"><span><i class="fa-solid fa-people-roof"></i></span> Show Relations</div> <!-- New button for showing relations -->
+  <div id="residentRelations" style="display:none;"> <!-- Container for relations' details -->
+    <!-- Relations' details will be displayed here -->
+  </div>
+      <div id="residentStatus">
+        <label><input type="radio" name="status" id="checkInRadio" value="Checked In"> Checked In</label>
+        <label><input type="radio" name="status" id="checkOutRadio" value="Checked Out"> Checked Out</label>
+      </div>
+      <div class="btn-card" onclick="checkInOut()">Check In/Out</div>
+    </div>
+    
+  
+    <div id="visitorNotification" style="display:none;">
+      <!-- this is where I want to display notification for registered visitor -->
+  
+      <h3>Visitor Notification</h3>
+      <!-- below is what shows the lists of visitors registered -->
+      <ul id="visitorList"></ul>
+  </div>
+  
+  <div id="visitorModal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close" onclick="closeVisitorModal()">&times;</span>
+            <h3>Visitor Notification</h3>
+            <ul id="visitorListModal"></ul>
+        </div>
+    </div>
+    
+  </div>
+  </div>
+
+  
+  </div>
+
+  <script src="secure-script.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
