@@ -1,6 +1,6 @@
 body{
     background: linear-gradient(90deg, dodgerblue, lightgray);
-    background-image: url('/images/lock.jpg');
+    background-image: url('lock.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
