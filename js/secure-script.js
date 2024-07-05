@@ -1,17 +1,17 @@
 const residents = [
-  { username: 'dan1', password: 'pass1', passcode: '1234', image: 'ceo.jpg', houseNumber: '001', status: 'Checked In', relations: [
-    { name: 'Joan Daniel', image: 'res1-wife.jpg' },
-    { name: 'Alex Dan', image: 'res1-son.jpg' }
+  { username: 'dan1', password: 'pass1', passcode: '1234', image: './images/ceo.jpg', houseNumber: '001', status: 'Checked In', relations: [
+    { name: 'Joan Daniel', image: './images/res1-wife.jpg' },
+    { name: 'Alex Dan', image: './images/res1-son.jpg' }
   ]},
-  { username: 'Hilson', password: 'pass02', passcode: '0000', image: 'profile-pix.jpg', houseNumber: 'Flat-B1 House 1', status: 'Checked In', relations: [
-    { name: 'Martina Hilson', image: 'wife-res2.jpg' },
-    { name: 'Chioma Innocent', image: 'res2-sis.jpg' },
-    { name: 'Chima Innocent', image: 'brother-res2.jpg' },
-    { name: 'Manuel Innocent', image: 'res2-friend.jpg' }
+  { username: 'Hilson', password: 'pass02', passcode: '0000', image: './images/profile-pix.jpg', houseNumber: 'Flat-B1 House 1', status: 'Checked In', relations: [
+    { name: 'Martina Hilson', image: './images/wife-res2.jpg' },
+    { name: 'Chioma Innocent', image: './images/res2-sis.jpg' },
+    { name: 'Chima Innocent', image: './images/brother-res2.jpg' },
+    { name: 'Manuel Innocent', image: './images/res2-friend.jpg' }
   ] },
-  { username: 'resident3', password: 'pass3', passcode: '3456', image: 'img3.jpg', houseNumber: '003', status: 'Checked In' },
-  { username: 'resident4', password: 'pass4', passcode: '4567', image: 'img4.jpg', houseNumber: '004', status: 'Checked In' },
-  { username: 'resident5', password: 'pass5', passcode: '5678', image: 'img5.jpg', houseNumber: '005', status: 'Checked In' },
+  { username: 'resident3', password: 'pass3', passcode: '3456', image: './images/img3.jpg', houseNumber: '003', status: 'Checked In' },
+  { username: 'resident4', password: 'pass4', passcode: '4567', image: './images/img4.jpg', houseNumber: '004', status: 'Checked In' },
+  { username: 'resident5', password: 'pass5', passcode: '5678', image: './images/img5.jpg', houseNumber: '005', status: 'Checked In' },
 ];
 
 
