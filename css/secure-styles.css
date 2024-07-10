@@ -1,6 +1,6 @@
 body{
-    background: linear-gradient(90deg, dodgerblue, lightgray);
-    background-image: url('lock.jpg');
+    /* background: linear-gradient(90deg, dodgerblue, lightgray); */
+    background-image: url('./lock.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -422,6 +422,11 @@ button {
       border-radius: 1rem;
       
     }
+    #visitorForm {
+      display: none;
+      position: absolute;
+      width: 90%;
+      top: 50px;
 
   }
 
